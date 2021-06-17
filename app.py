@@ -66,7 +66,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     elif '日記' in msg:
         message = diary()
-        line_bot_api.reply_message(event.reply_token, '請問需要什麼服務呢')
+        line_bot_api.reply_message(event.reply_token, message)
     else:
         message = TextSendMessage(text=msg)
         line_bot_api.reply_message(event.reply_token, message)
