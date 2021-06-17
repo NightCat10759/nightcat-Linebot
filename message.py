@@ -208,32 +208,5 @@ def image_carousel_message1():
         )
     )
     return message
-def ToDoList():
-    message = TemplateSendMessage(
-        alt_text='待辦事項',
-        template=ButtonsTemplate(
-            title="請選擇加入刪除待辦事項",
-            text="記得要做完哦~",
-            actions=[
-                Add_ToDoList(
-                    label="請選擇待辦日期",
-                    data="input_ToDoDate",
-                    mode='date',
-                    initial='2021-01-01',
-                    max='2100-01-01'
-                    min='2021-01-01'
-                ),
-                Delete_ToDoList(
-                    label="刪除待辦",
-                    text="有哪些抽獎品項呢？"
-                ),
-                Switch_ToDoList(
-                    label="免費註冊享回饋",
-                    text="有哪些抽獎品項呢？"
-                )
-            ]
-        )
-    )
-    return message
 
 #關於LINEBOT聊天內容範例
