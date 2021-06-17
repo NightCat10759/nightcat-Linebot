@@ -10,7 +10,7 @@ from linebot.models import *
 
 
 #======這裡是呼叫的檔案內容=====
-from diary import *
+#from diary import *
 from message import *
 from Function import *
 #======這裡是呼叫的檔案內容=====

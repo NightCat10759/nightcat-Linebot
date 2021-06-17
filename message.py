@@ -3,6 +3,34 @@ from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
+
+def diary():
+    message = TemplateSendMessage(
+        alt_text='待辦唷～',
+ #       schedule_dict = {},
+        template=ButtonsTemplate(
+            thumbnail_image_url="../IMG/TODO.jpg",
+            title="是否要紀錄待辦？",
+            text="選擇以下的操作",
+            actions=[
+                Show(
+                    label="顯示全部待辦",
+                    text="全部待辦"
+                ),
+                Add(
+                    label="增加待辦",
+                    text="增加待辦瞜!!!"
+                ),
+                Delete(
+                    label="刪除待辦",
+                    text="刪除指定待辦"
+                )
+            ]
+        )
+    )
+    return message
+
+
 #最新合作廠商
 #ImagemapSendMessage(組圖訊息)
 def imagemap_message():
