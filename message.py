@@ -82,27 +82,24 @@ def imagemap_message():
 #TemplateSendMessage - ButtonsTemplate (按鈕介面訊息)
 def buttons_message():
     message = TemplateSendMessage(
-        alt_text='好消息來囉～',
+        alt_text='待辦唷～',
+ #       schedule_dict = {},
         template=ButtonsTemplate(
-            thumbnail_image_url="https://pic2.zhimg.com/v2-de4b8114e8408d5265503c8b41f59f85_b.jpg",
-            title="是否要進行抽獎活動？",
-            text="輸入生日後即獲得抽獎機會",
+            thumbnail_image_url="../IMG/TODO.jpg",
+            title="是否要紀錄待辦？",
+            text="選擇以下的操作",
             actions=[
-                DatetimePickerTemplateAction(
-                    label="請選擇生日",
-                    data="input_birthday",
-                    mode='date',
-                    initial='1990-01-01',
-                    max='2019-03-10',
-                    min='1930-01-01'
+                MessageTemplateAction(
+                    label="顯示全部待辦",
+                    text="全部待辦"
                 ),
                 MessageTemplateAction(
-                    label="看抽獎品項",
-                    text="有哪些抽獎品項呢？"
+                    label="增加待辦",
+                    text="增加待辦瞜!!!"
                 ),
-                URITemplateAction(
-                    label="免費註冊享回饋",
-                    uri="https://tw.shop.com/nbts/create-myaccount.xhtml?returnurl=https%3A%2F%2Ftw.shop.com%2F"
+                MessageTemplateAction(
+                    label="刪除待辦",
+                    text="刪除指定待辦"
                 )
             ]
         )
