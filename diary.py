@@ -16,7 +16,7 @@ def diary():
         alt_text='待辦唷～',
  #       schedule_dict = {},
         template=ButtonsTemplate(
-            thumbnail_image_url="../IMG/TODO.jpg",
+            thumbnail_image_url="https://drive.google.com/file/d/1BQc2g8UsoS2Sy-TmWN0sRdV2Gy1dEOWq/view?usp=sharing",
             title="是否要紀錄待辦？",
             text="選擇以下的操作",
             actions=[
