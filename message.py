@@ -17,14 +17,14 @@ def diary():
                     label="顯示全部待辦",
                     text="全部待辦"
                 ),
-      #          MessageTemplateAction(
-       #             label="增加待辦",
-        #            text="增加待辦瞜!!!"
-         #       ),
-          #      MessageTemplateAction(
-           #         label="刪除待辦",
-            #        text="刪除指定待辦"
-             #   )
+                MessageTemplateAction(
+                    label="增加待辦",
+                    text="增加待辦瞜!!!"
+                ),
+                MessageTemplateAction(
+                    label="刪除待辦",
+                    text="刪除指定待辦"
+                )
             ]
         )
     )
