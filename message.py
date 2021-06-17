@@ -3,6 +3,7 @@ from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
+#最新合作廠商
 #ImagemapSendMessage(組圖訊息)
 def imagemap_message():
     message = ImagemapSendMessage(
@@ -49,6 +50,7 @@ def imagemap_message():
     )
     return message
 
+#最新活動訊息
 #TemplateSendMessage - ButtonsTemplate (按鈕介面訊息)
 def buttons_message():
     message = TemplateSendMessage(
@@ -78,7 +80,7 @@ def buttons_message():
         )
     )
     return message
-
+#註冊會員
 #TemplateSendMessage - ConfirmTemplate(確認介面訊息)
 def Confirm_Template():
 
