@@ -13,15 +13,15 @@ def diary():
             title="是否要紀錄待辦？",
             text="選擇以下的操作",
             actions=[
-                Show(
+                MessageTemplateAction(
                     label="顯示全部待辦",
                     text="全部待辦"
                 ),
-                Add(
+                MessageTemplateAction(
                     label="增加待辦",
                     text="增加待辦瞜!!!"
                 ),
-                Delete(
+                MessageTemplateAction(
                     label="刪除待辦",
                     text="刪除指定待辦"
                 )
