@@ -4,7 +4,7 @@ from linebot.models import *
 
 #Todo = 主程式傳來的msg
 #TodoDict = 主程式傳來的dict
-"""
+
 #   如何新增待辦?    Ans:請輸入 新增(年月日)(內容) Ex: 新增0522今天要去倒垃圾
 def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     TodoDict.setdefault(MonthDay,[])
@@ -13,7 +13,7 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     return message
 
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
-
+"""
 def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     num=int(num) # 將第幾個轉換成數字
     numLocal=num-1
