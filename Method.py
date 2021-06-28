@@ -29,7 +29,7 @@ def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
 #    if Count==0:
 #        message = TextSendMessage(text=Monthday[1]+"月"+Monthday[3:5]+"日沒有待辦")
     if Count==0:
-        message = TextSendMessage(text=Monthday[1]+"月"+Monthday[3:5]+"日沒有待辦"
+        message = TextSendMessage(text=Monthday[1]+"月"+Monthday[2:4]+"日沒有待辦")
         return message
     else:
         message = TextSendMessage(text=Str)
