@@ -13,13 +13,14 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     return message
 
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
-
+"""
 def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
+    num=int(num) # 將第幾個轉換成數字
     numLocal=num-1
     del TodoDict[Monthday][numLocal]
     message = TextSendMessage(text="刪除第"+str(num)+"項成功")
     return message
-"""
+
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
     try:
