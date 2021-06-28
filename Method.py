@@ -26,9 +26,9 @@ def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
         Str=""
         for k in TodoDict[MonthDay]:
             Count+=1
-            Str+=MonthDay[1]+"月"+MonthDay[2:4]+"日 第%d項待辦"%Count+str(k)+"\n"
+            Str+=MonthDay[1]+"月"+MonthDay[2:4]+"日 第%d項 待辦"%Count+str(k)+"\n"
             message = TextSendMessage(text=Str)
-            return message
+        return message
     except KeyError:
         message = TextSendMessage(text="輸入錯誤的月日")
         return message
@@ -38,8 +38,6 @@ def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
     else:
         message = TextSendMessage(text=MonthDay[1]+"月"+MonthDay[2:4]+"日沒有待辦")
         return message
-
-
 #   使用手冊
 def Help() :
     message = TextSendMessage(text="此待辦機器人最多可以紀錄10行待辦，輸入數字顯示使用方法。\n \
