@@ -5,4 +5,4 @@ from linebot.models import *
 
 def TRY():
     message = TextSendMessage(text="Just try import package")
-    line_bot_api.reply_message(event.reply_token, message)
+    return message

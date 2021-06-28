@@ -54,8 +54,7 @@ def callback():
 def Help():
     message = TextSendMessage(text="輸入數字顯示該項目使用方法 \
         1.如何新增待辦?\n2.如何刪除待辦?\n3.如何插入待辦?\n4.如何顯示待辦?")
-    line_bot_api.reply_message(event.reply_token, message)
-
+    return message
     text="1.如何新增待辦? 格式(指令)(年月日)(內容) Ex:新增20190628今天要去買早餐\n \
         \
         2.如何刪除待辦? 格式(指令)(年月日)(內容) Ex:新增20190628今天要去買早餐\n \
@@ -86,12 +85,13 @@ def handle_message(event):
         message = TextSendMessage(text=msg)
         line_bot_api.reply_message(event.reply_token, message)
     elif 'Help' in msg:
-        Help()
+        message = Help()
+        line_bot_api.reply_message(event.reply_token, message)
     elif 'try' in msg:
-        TRY()
+        message = TRY()
+        line_bot_api.reply_message(event.reply_token, message)
     else:
-        message = TextSendMessage(text="歡迎使用TODO機器人，如果不知道如何使用請輸入Help，\
-            如有不清楚的地方請輸入Help。")
+        message = TextSendMessage(text="歡迎使用TODO機器人，如果不知道如何使用請輸入Help。")
         line_bot_api.reply_message(event.reply_token, message)
 
 import os
