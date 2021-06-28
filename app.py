@@ -71,10 +71,7 @@ def Help():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    #TRY()
-    message = TextSendMessage(text="歡迎使用TODO機器人，如果不知道如何使用請輸入Help，\
-    將會顯示相關資訊。")
-    line_bot_api.reply_message(event.reply_token, message)
+
     msg = event.message.text #自己傳的訊息 , 型態為String
     if   '新增' in msg[0:2]:
         message = TextSendMessage(text=msg)
@@ -90,8 +87,11 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     elif 'Help' in msg:
         Help()
+    elif 'try' in msg:
+        TRY()
     else:
-        message = TextSendMessage(text="輸入失敗，如有不清楚的地方請輸入Help。")
+        message = TextSendMessage(text="歡迎使用TODO機器人，如果不知道如何使用請輸入Help，\
+            如有不清楚的地方請輸入Help。")
         line_bot_api.reply_message(event.reply_token, message)
 
 import os
