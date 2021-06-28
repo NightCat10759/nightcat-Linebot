@@ -65,7 +65,7 @@ def handle_message(event):
             numLocal=num-1
   #          del TodoDict[Monthday][numLocal]
  #           message = TextSendMessage(text="刪除第"+str(num)+"項成功")
-            message = TextSendMessage(text="num="+num+" numLocal=%d"%numLocal\
+            message = TextSendMessage(text="num=%d"%num+" numLocal=%d"%numLocal\
                 +"Monthday="+Monthday)
             return message
         message = DeleteTodo(msg[2:6],msg[7],Todo_dict) #(月日,第幾個,待辦表)
