@@ -29,6 +29,9 @@ def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
     if Count==0:
         message = TextSendMessage(text=Monthday[1]+"月"+Monthday[2:4]+"日沒有待辦")
         return message
+    elif Monthday.isdigit()==False:
+        message = TextSendMessage(text="輸入錯誤")
+        return message
     else:
         message = TextSendMessage(text=Str)
         return message
