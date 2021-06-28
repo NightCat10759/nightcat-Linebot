@@ -21,13 +21,14 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
     Count=0
-    Str=""
-    for k in TodoDict[Monthday]:
+  #  Str=""
+ #   for k in TodoDict[Monthday]:
  #       Str+="第%d項"%Count+str(k)+"\n"
-        Count+=1
-        Str+="第%d項"%Count+"\n"
-    if Count==0:
+ #       Count+=1
+#        Str+="第%d項"%Count+"\n"
+#    if Count==0:
 #        message = TextSendMessage(text=Monthday[1]+"月"+Monthday[3:5]+"日沒有待辦")
+    if Count==0:
         message = TextSendMessage(text="沒有待辦")
         return message
     else:
@@ -38,5 +39,5 @@ def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
 #   使用手冊
 def Help() :
     message = TextSendMessage(text="此待辦機器人最多可以紀錄10行待辦，輸入數字顯示使用方法。\n \
-    1.如何新增待辦?\n2.如何刪除待辦?\n3.如何顯示待辦?")
+    1.如何新增待辦?\n     2.如何刪除待辦?\n     3.如何顯示待辦?")
     return message
