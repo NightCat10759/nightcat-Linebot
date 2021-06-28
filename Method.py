@@ -7,8 +7,9 @@ from linebot.models import *
 
 #   如何新增待辦?    Ans:請輸入 新增(年月日)(內容) Ex: 新增0522今天要去倒垃圾
 def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
-    TodoDict[MonthDay]=[Content]    #把月日設為KEY值，把內容丟到後面的list。 <==新增成功
-    message = TextSendMessage(text=MonthDay[1]+"月"+MonthDay[2:4]+"日待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
+    TodoDict.setdefault(MonthDay,[])
+    TodoDict[MonthDay].append(Content)#把月日設為KEY值，把內容丟到後面的list。 <==新增成功
+    message = TextSendMessage(text=MonthDay[0:2]+"月"+MonthDay[2:4]+"日待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
     return message
 """
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
