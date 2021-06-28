@@ -7,7 +7,6 @@ from linebot.models import *
 def diary():
     message = TemplateSendMessage(
         alt_text='待辦唷～',
- #       schedule_dict = {},
         template=ButtonsTemplate(
             thumbnail_image_url="https://drive.google.com/file/d/1BQc2g8UsoS2Sy-TmWN0sRdV2Gy1dEOWq/view?usp=sharing",
             title="是否要紀錄待辦？",
@@ -15,7 +14,6 @@ def diary():
             actions=[
                 MessageTemplateAction(
                     label="顯示全部待辦",
-                    text="全部待辦"
                 ),
                 MessageTemplateAction(
                     label="增加待辦",

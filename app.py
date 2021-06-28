@@ -11,9 +11,6 @@ from linebot.models import *
 
 #======這裡是呼叫的檔案內容=====
 from TRY import *
-#from diary import *
-#from message import *
-#from Function import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
@@ -96,36 +93,6 @@ def handle_message(event):
     else:
         message = TextSendMessage(text="輸入失敗，如有不清楚的地方請輸入Help。")
         line_bot_api.reply_message(event.reply_token, message)
-
-
-
-
-
-
-
-
-
- #   if '最新合作廠商' in msg:
- #    message = imagemap_message()
- #    line_bot_api.reply_message(event.reply_token, message)
- #   elif '本本' in msg:
- #     message = buttons_message()
- #      line_bot_api.reply_message(event.reply_token, message)
- #   elif '註冊會員' in msg:
- #       message = Confirm_Template()
- #       line_bot_api.reply_message(event.reply_token, message)
- #   elif '旋轉木馬' in msg:
- #       message = Carousel_Template()
- #       line_bot_api.reply_message(event.reply_token, message)
- #   elif '功能列表' in msg:
- #       message = function_list()
- #       line_bot_api.reply_message(event.reply_token, message)
- #   elif '日記' in msg:
- #       message = diary()
- #       line_bot_api.reply_message(event.reply_token, message)
- #   else:
- #       message = TextSendMessage(text=msg)
- #       line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
