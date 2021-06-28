@@ -20,11 +20,15 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
 """
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
-    if TodoDict[Monthday][0]:
-        message = TextSendMessage(text=Monthday[1]+"月"+Monthday[2:4]+"日沒有待辦")
-        return message
-    elif Monthday.isdigit()==False:
-        message = TextSendMessage(text="輸入錯誤")
+    try:
+        if TodoDict[Monthday][0]:   #檢查當日有沒有待辦
+            message = TextSendMessage(text=Monthday[1]+"月"+Monthday[2:4]+"日沒有待辦")
+            return message
+        elif Monthday.isdigit()==False:     #檢查輸入日期是否正確
+            message = TextSendMessage(text="輸入錯誤")
+            return message
+    except KeyError:
+        message = TextSendMessage(text="輸入錯誤的月日")
         return message
     Count=0
     Str=""
