@@ -24,7 +24,6 @@ import tempfile, os
 import datetime
 import time
 #======python的函數庫==========
-Todo_dict = {}
 
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
@@ -48,6 +47,7 @@ def callback():
         abort(400)
     return 'OK'
 
+Todo_dict = {}
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -61,7 +61,7 @@ def handle_message(event):
     elif '顯示' in msg[0:2]:
         message = ShowTodo(msg[2:6],Todo_dict) #(月日,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
-    if 'Help' in msg:
+    elif 'Help' in msg:
         message = Help()
         line_bot_api.reply_message(event.reply_token, message)
     elif '1' in msg:
