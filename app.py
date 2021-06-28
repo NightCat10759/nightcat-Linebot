@@ -47,28 +47,37 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = event.message.text
-    if '最新合作廠商' in msg:
+    msg = event.message.text #自己傳的訊息
+    if '新增' in msg[0:2]:
         message = imagemap_message()
         line_bot_api.reply_message(event.reply_token, message)
-    elif '本本' in msg:
-        message = buttons_message()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '註冊會員' in msg:
-        message = Confirm_Template()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '旋轉木馬' in msg:
-        message = Carousel_Template()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '功能列表' in msg:
-        message = function_list()
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '日記' in msg:
-        message = diary()
-        line_bot_api.reply_message(event.reply_token, message)
     else:
-        message = TextSendMessage(text=msg)
+        message = TextSendMessage(text="No Content")
         line_bot_api.reply_message(event.reply_token, message)
+
+
+
+    #if '最新合作廠商' in msg:
+    #    message = imagemap_message()
+    #    line_bot_api.reply_message(event.reply_token, message)
+   # elif '本本' in msg:
+   #     message = buttons_message()
+  #      line_bot_api.reply_message(event.reply_token, message)
+  #  elif '註冊會員' in msg:
+ #       message = Confirm_Template()
+ #       line_bot_api.reply_message(event.reply_token, message)
+ #   elif '旋轉木馬' in msg:
+ #       message = Carousel_Template()
+ #       line_bot_api.reply_message(event.reply_token, message)
+ #   elif '功能列表' in msg:
+ #       message = function_list()
+ #       line_bot_api.reply_message(event.reply_token, message)
+ #   elif '日記' in msg:
+ #       message = diary()
+ #       line_bot_api.reply_message(event.reply_token, message)
+ #   else:
+ #       message = TextSendMessage(text=msg)
+ #       line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
