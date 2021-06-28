@@ -8,7 +8,7 @@ from linebot.models import *
 #   如何新增待辦?    Ans:請輸入 新增(年月日)(內容) Ex: 新增0522今天要去倒垃圾
 def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     TodoDict[MonthDay]=[Content]    #把月日設為KEY值，把內容丟到後面的list。 <==新增成功
-    message = TextSendMessage(text=MonthDay+"待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
+    message = TextSendMessage(text=Monthday[1]+"月"+Monthday[2:4]+"日待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
     return message
 """
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
@@ -21,21 +21,21 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
     try:
-        if TodoDict[Monthday][0]:   #檢查當日有沒有待辦
-            message = TextSendMessage(text=Monthday[1]+"月"+Monthday[2:4]+"日沒有待辦")
-            return message
-        elif Monthday.isdigit()==False:     #檢查輸入日期是否正確
-            message = TextSendMessage(text="輸入錯誤")
+        Count=0
+        Str=""
+        for k in TodoDict[Monthday]:
+            Count+=1
+            Str+=Monthday[1]+"月"+Monthday[2:4]+"日 第%d項待辦"%Count+str(k)+"\n"
+            message = TextSendMessage(text=Str)
             return message
     except KeyError:
         message = TextSendMessage(text="輸入錯誤的月日")
         return message
-    Count=0
-    Str=""
-    for k in TodoDict[Monthday]:
-        Count+=1
-        Str+=Monthday[1]+"月"+Monthday[2:4]+"日 第%d項待辦"%Count+str(k)+"\n"
+     if count!=0:
         message = TextSendMessage(text=Str)
+        return message
+    else:
+        message = TextSendMessage(text=Monthday[1]+"月"+Monthday[2:4]+"日沒有待辦")
         return message
 
 
