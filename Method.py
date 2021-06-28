@@ -11,14 +11,14 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     TodoDict[MonthDay].append(Content)#把月日設為KEY值，把內容丟到後面的list。 <==新增成功
     message = TextSendMessage(text=MonthDay[0:2]+"月"+MonthDay[2:4]+"日待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
     return message
-"""
+
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
 def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     numLocal=num-1
     del TodoDict[Monthday][numLocal]
     message = TextSendMessage(text="刪除第"+str(num)+"項成功")
     return message
-"""
+
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
     try:
@@ -26,7 +26,7 @@ def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
         Str=""
         for k in TodoDict[MonthDay]:
             Count+=1
-            Str+=MonthDay[1]+"月"+MonthDay[2:4]+"日 第%d項 待辦"%Count+str(k)+"\n"
+            Str+=MonthDay[1]+"月"+MonthDay[2:4]+"日 第%d項待辦:"%Count+str(k)+"\n"
             message = TextSendMessage(text=Str)
         return message
     except KeyError:
