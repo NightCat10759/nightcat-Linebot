@@ -45,21 +45,15 @@ def callback():
         abort(400)
     return 'OK'
 
-Todo_dict = {'0202':["到水","座式"]}
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    Todo_dict = {}
     msg = event.message.text #自己傳的訊息 , 型態為String
     if  '新增' in msg[0:2]:
         message = IncreaseTodo(msg[2:6],msg[6:],Todo_dict) #(月日,內容,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '刪除' in msg[0:2]:
-  #      def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
-  #          num=int(num) # 將第幾個轉換成數字
-  #          numLocal=num-1
-   #         del TodoDict[Monthday][numLocal]
-   #         message = TextSendMessage(text="刪除第"+str(num)+"項成功")
-  #         return message
         message = DeleteTodo(msg[2:6],msg[7],Todo_dict) #(月日,第幾個,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '顯示' in msg[0:2]:
@@ -78,12 +72,11 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     elif '3' in msg:
         message = TextSendMessage(text="如何顯示待辦?\n \
-            Ans:請輸入\"顯示(月日)\" Ex:顯示0522第3個待辦")
+            Ans:請輸入\"顯示(月日)\" Ex:顯示0522")
         line_bot_api.reply_message(event.reply_token, message)
     else:
         message = TextSendMessage(text="歡迎使用TODO每日待辦機器人，如果不知道如何使用請輸入Help。")
         line_bot_api.reply_message(event.reply_token, message)
-
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
