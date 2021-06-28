@@ -23,7 +23,8 @@ def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
     Count=1
     Str=""
     for k in TodoDict[Monthday]:
-        Str+="第%d項"%Count+str(k)+"\n"
+ #       Str+="第%d項"%Count+str(k)+"\n"
+        Str+="第%d項"%Count+"\n"
         Count+=1
     message = TextSendMessage(text=Str)
     return message
