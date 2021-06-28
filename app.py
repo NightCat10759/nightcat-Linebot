@@ -68,7 +68,8 @@ def handle_message(event):
             message = TextSendMessage(text="num=%d"%num+" numLocal=%d"%numLocal\
                 +"Monthday="+Monthday)
             return message
-        message = DeleteTodo(msg[2:6],msg[7],Todo_dict) #(月日,第幾個,待辦表)
+        num=int(msg[7])-1 # 將第幾個轉換成數字 ，-1表示陣列。
+        message = DeleteTodo(msg[2:6],num,Todo_dict) #(月日,第幾個,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '顯示' in msg[0:2]:
         message = ShowTodo(msg[2:6],Todo_dict) #(月日,待辦表)
