@@ -2,8 +2,7 @@
 #####                        1.可以新增待辦
 #####                        2.可以刪除特定待辦
 #####                        3.可以顯示全部待辦
-#####                        4.可以插入待辦
-#####                        5.可以移動待辦
+                   
 
 from flask import Flask, request, abort
 
@@ -65,21 +64,20 @@ def handle_message(event):
     if 'Help' in msg:
         message = Help()
         line_bot_api.reply_message(event.reply_token, message)
- #   elif '1' in msg:
- #       message = TextSendMessage(text="如何新增待辦?\n \
- #           Ans:請輸入\"新增(月日)(內容)\" Ex: 新增0522今天要去倒垃圾")
- #       line_bot_api.reply_message(event.reply_token, message)
- #   elif '2' in msg:
- #       message = TextSendMessage(text="如何刪除待辦?\n \
- #           Ans:請輸入 \"刪除(月日)第(數字)個待辦\" Ex: 刪除0526第5個待辦")
- #       line_bot_api.reply_message(event.reply_token, message)
- #   elif '3' in msg:
- #       message = TextSendMessage(text="如何顯示待辦?\n \
- #           Ans:請輸入\"顯示(月日)\" Ex:顯示0522第3個待辦")
- #       line_bot_api.reply_message(event.reply_token, message)
+    elif '1' in msg:
+        message = TextSendMessage(text="如何新增待辦?\n \
+            Ans:請輸入\"新增(月日)(內容)\" Ex: 新增0522今天要去倒垃圾")
+        line_bot_api.reply_message(event.reply_token, message)
+    elif '2' in msg:
+        message = TextSendMessage(text="如何刪除待辦?\n \
+            Ans:請輸入 \"刪除(月日)第(數字)個待辦\" Ex: 刪除0526第5個待辦")
+        line_bot_api.reply_message(event.reply_token, message)
+    elif '3' in msg:
+        message = TextSendMessage(text="如何顯示待辦?\n \
+            Ans:請輸入\"顯示(月日)\" Ex:顯示0522第3個待辦")
+        line_bot_api.reply_message(event.reply_token, message)
     else:
-        message = TextSendMessage(text="歡迎使用TODO每日待辦機器人，\
-            如果不知道如何使用請輸入Help。")
+        message = TextSendMessage(text="歡迎使用TODO每日待辦機器人，如果不知道如何使用請輸入Help。")
         line_bot_api.reply_message(event.reply_token, message)
 
 import os
