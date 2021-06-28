@@ -49,7 +49,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text #自己傳的訊息
     if '新增' in msg[0:2]:
-        message = imagemap_message()
+        message = TextSendMessage(text=msg)
         line_bot_api.reply_message(event.reply_token, message)
     else:
         message = TextSendMessage(text="No Content")
