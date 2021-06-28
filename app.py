@@ -51,20 +51,15 @@ Todo_dict = {'0202':["到水","座式"]}
 def handle_message(event):
     msg = event.message.text #自己傳的訊息 , 型態為String
     if  '新增' in msg[0:2]:
- #       def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
- #           TodoDict.setdefault(MonthDay,[])
- #           TodoDict[MonthDay].append(Content)#把月日設為KEY值，把內容丟到後面的list。 <==新增成功
-  ##          message = TextSendMessage(text=MonthDay[0:2]+"月"+MonthDay[2:4]+"日待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
- ##           return message
         message = IncreaseTodo(msg[2:6],msg[6:],Todo_dict) #(月日,內容,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '刪除' in msg[0:2]:
-        def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
-            num=int(num) # 將第幾個轉換成數字
-            numLocal=num-1
-            del TodoDict[Monthday][numLocal]
-            message = TextSendMessage(text="刪除第"+str(num)+"項成功")
-            return message
+  #      def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
+  #          num=int(num) # 將第幾個轉換成數字
+  #          numLocal=num-1
+   #         del TodoDict[Monthday][numLocal]
+   #         message = TextSendMessage(text="刪除第"+str(num)+"項成功")
+  #         return message
         message = DeleteTodo(msg[2:6],msg[7],Todo_dict) #(月日,第幾個,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '顯示' in msg[0:2]:
