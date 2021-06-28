@@ -25,9 +25,7 @@ def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
  #   for k in TodoDict[Monthday]:
  #       Str+="第%d項"%Count+str(k)+"\n"
  #       Count+=1
-    Str+="第%d項"%Count+"\n"
-#    if Count==0:
-#        message = TextSendMessage(text=Monthday[1]+"月"+Monthday[3:5]+"日沒有待辦")
+    Str+=Monthday[1]+"月"+Monthday[2:4]+"日 第%d項待辦"%Count+"\n"
     if Count==0:
         message = TextSendMessage(text=Monthday[1]+"月"+Monthday[2:4]+"日沒有待辦")
         return message
