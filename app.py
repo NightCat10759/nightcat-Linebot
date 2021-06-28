@@ -47,7 +47,7 @@ def callback():
         abort(400)
     return 'OK'
 
-Todo_dict = {}
+Todo_dict = {'0202'=["到水","座式"]}
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
