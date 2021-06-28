@@ -1,3 +1,10 @@
+#####   這是一個待辦小工具:
+#####                        1.可以新增待辦
+#####                        2.可以刪除特定待辦
+#####                        3.可以顯示全部待辦
+#####                        4.可以插入待辦
+#####                        5.可以移動待辦
+
 from flask import Flask, request, abort
 
 from linebot import (
@@ -10,7 +17,8 @@ from linebot.models import *
 
 
 #======這裡是呼叫的檔案內容=====
-from TRY import *
+from Method import *
+from Todolist import *
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
@@ -41,57 +49,38 @@ def callback():
         abort(400)
     return 'OK'
 
-
-#
-#   待辦小工具: 1.可以新增待辦
-#              2.可以刪除特定待辦
-#              3.可以顯示全部待辦
-#              4.可以插入待辦
-#              5.可以移動待辦
-#
-
-# 使用手冊
-def Help():
-    message = TextSendMessage(text="輸入數字顯示該項目使用方法 \
-        1.如何新增待辦?\n2.如何刪除待辦?\n3.如何插入待辦?\n4.如何顯示待辦?")
-    return message
-    text="1.如何新增待辦? 格式(指令)(年月日)(內容) Ex:新增20190628今天要去買早餐\n \
-        \
-        2.如何刪除待辦? 格式(指令)(年月日)(內容) Ex:新增20190628今天要去買早餐\n \
-        \
-        3.如何插入待辦? 格式(指令)(選擇插入行數) Ex:輸入插入\n \
-        \
-        4.如何顯示待辦? 格式(指令) 第一步輸入:顯示 就會顯示出該行數以及內容 \
-            Ex: 顯示\n \
-            1.20180502:今天要做事 \n  \
-            2.20180505:今天要出門  "
-
-
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-
+    Todo_dict = {}
     msg = event.message.text #自己傳的訊息 , 型態為String
     if   '新增' in msg[0:2]:
-        message = TextSendMessage(text=msg)
+        message = IncreaseTodo(msg[2:6],msg[6:],Todo_dict) #(月日,內容,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '刪除' in msg[0:2]:
-        message = TextSendMessage(text=msg)
-        line_bot_api.reply_message(event.reply_token, message)
-    elif '插入' in msg[0:2]:
-        message = TextSendMessage(text=msg)
+        message = DeleteTodo(msg[2:6],msg[7],Todo_dict) #(月日,第幾個,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '顯示' in msg:
-        message = TextSendMessage(text=msg)
+        message = ShowTodo(msg[2:6],Todo_dict) #(月日,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif 'Help' in msg:
         message = Help()
         line_bot_api.reply_message(event.reply_token, message)
-    elif 'try' in msg:
-        message = TRY()
+    elif '1' in msg:
+        message = TextSendMessage(text="如何新增待辦?\n \
+            Ans:請輸入\"新增(月日)(內容)\" Ex: 新增0522今天要去倒垃圾")
+        line_bot_api.reply_message(event.reply_token, message)
+    elif '2' in msg:
+        message = TextSendMessage(text="如何刪除待辦?\n \
+            Ans:請輸入 \"刪除(月日)第(數字)個待辦\" Ex: 刪除0526第5個待辦")
+        line_bot_api.reply_message(event.reply_token, message)
+    elif '3' in msg:
+        message = TextSendMessage(text="如何顯示待辦?\n \
+            Ans:請輸入\"顯示(月日)\" Ex:顯示0522第3個待辦")
         line_bot_api.reply_message(event.reply_token, message)
     else:
-        message = TextSendMessage(text="歡迎使用TODO機器人，如果不知道如何使用請輸入Help。")
+        message = TextSendMessage(text="歡迎使用TODO每日待辦機器人，\
+            如果不知道如何使用請輸入Help。")
         line_bot_api.reply_message(event.reply_token, message)
 
 import os
