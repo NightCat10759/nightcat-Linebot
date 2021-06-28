@@ -24,6 +24,7 @@ import tempfile, os
 import datetime
 import time
 #======python的函數庫==========
+Todo_dict = {}
 
 app = Flask(__name__)
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
@@ -50,7 +51,6 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    Todo_dict = {}
     msg = event.message.text #自己傳的訊息 , 型態為String
     if  '新增' in msg[0:2]:
         message = IncreaseTodo(msg[2:6],msg[6:],Todo_dict) #(月日,內容,待辦表)
