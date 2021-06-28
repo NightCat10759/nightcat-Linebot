@@ -32,7 +32,7 @@ def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
         message = TextSendMessage(text="沒有待辦")
         return message
     else:
-        message = TextSendMessage(text="有待辦")
+        message = TextSendMessage(text=Str)
         return message
 
 
