@@ -21,7 +21,7 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
 """
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
-    message = TextSendMessage(text=TodoDict[MonthDay][0])
+    message = TextSendMessage(text=TodoDict[MonthDay][2])
     return message
     try:
         Count=0
