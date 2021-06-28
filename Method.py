@@ -31,7 +31,7 @@ def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
     except KeyError:
         message = TextSendMessage(text="輸入錯誤的月日")
         return message
-     if count!=0:
+     if Count!=0:
         message = TextSendMessage(text=Str)
         return message
     else:
