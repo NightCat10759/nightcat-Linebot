@@ -17,7 +17,7 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     del TodoDict[Monthday][numLocal]
     message = TextSendMessage(text="刪除第"+str(num)+"項成功")
     return message
-
+"""
 #   如何顯示待辦?    Ans:請輸入 顯示
 def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
     Count=1
@@ -27,7 +27,7 @@ def ShowTodo(Monthday,TodoDict) :   #(月日,待辦表)
         Count+=1
     message = TextSendMessage(text=Str)
     return message
-"""
+
 
 #   使用手冊
 def Help() :
