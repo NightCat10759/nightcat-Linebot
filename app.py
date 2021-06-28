@@ -55,7 +55,7 @@ def handle_message(event):
     Todo_dict = {}
     msg = event.message.text #自己傳的訊息 , 型態為String
     if   '新增' in msg[0:2]:
-        message = IncreaseTodo(msg[2:6],msg[6:],Todo_dict) #(月日,內容,待辦表)
+        message = TextSendMessage(IncreaseTodo(msg[2:6],msg[6:],Todo_dict)) #(月日,內容,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
   #  elif '刪除' in msg[0:2]:
  #       message = DeleteTodo(msg[2:6],msg[7],Todo_dict) #(月日,第幾個,待辦表)
