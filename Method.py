@@ -1,8 +1,8 @@
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
-
 #TodoDict = 主程式傳來的dict
+
 def Help_template():
     message = TemplateSendMessage(
         alt_text='一則旋轉木馬按鈕訊息',
@@ -101,7 +101,7 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
         message = TextSendMessage(text="日期必須為整數")
         return message
     num=int(num) # 將第幾個轉換成數字
-    if num is None:
+    if num == 0:
         message = TextSendMessage(text="請輸入要刪除的行數")
         return message
     else:
@@ -127,8 +127,3 @@ def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
     except KeyError:
         message = TextSendMessage(text="輸入錯誤的月日")
         return message
-#   使用手冊
-def Help() :
-    message = TextSendMessage(text="此待辦機器人最多可以紀錄10行待辦，輸入數字顯示使用方法。\n \
-    1.如何新增待辦?\n     2.如何刪除待辦?\n     3.如何顯示待辦?")
-    return message
