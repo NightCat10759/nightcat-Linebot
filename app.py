@@ -57,7 +57,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     elif '刪除' in msg[0:2]:
         if msg[7].isdigit == False:
-            message =  TextSendMessage(text="必須是數字，詳細請輸入Help。")
+            message =  TextSendMessage(text="行數必須是數字，詳細請輸入Help。")
             line_bot_api.reply_message(event.reply_token, message)
         try:
             Todo_dict[msg[2:6]]
