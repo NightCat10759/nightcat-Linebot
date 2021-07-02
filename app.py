@@ -56,7 +56,7 @@ def handle_message(event):
         message = IncreaseTodo(msg[2:6],msg[6:],Todo_dict) #(月日,內容,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '刪除' in msg[0:2]:
-        if msg[7].isdigit:
+        if msg[7].isdigit():
             try:
                 Todo_dict[msg[2:6]]
                 message = DeleteTodo(msg[2:6],msg[7],Todo_dict) #(月日,第幾個,待辦表)
