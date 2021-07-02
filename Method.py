@@ -15,15 +15,15 @@ def Help_template():
                     actions=[
                         MessageTemplateAction(
                             label='如何新增待辦?',
-                            text='Ans => 請輸入 : 新增(月日)(內容) Ex: 新增0522今天要去倒垃圾")'
+                            text='Ans => 請輸入 : 新增(月日)(內容) \nEx: 新增0522今天要去倒垃圾")'
                         ),
                         MessageTemplateAction(
                             label='如何顯示待辦?',
-                            text='Ans => 請輸入:顯示(月日) Ex:顯示0522"'
+                            text='Ans => 請輸入:顯示(月日) \nEx:顯示0522"'
                         ),
                         MessageTemplateAction(
                             label='如何刪除待辦?',
-                            text='Ans => 請輸入 :刪除(月日)第(數字)個待辦 Ex: 刪除0526第5個待辦'
+                            text='Ans => 請輸入 :刪除(月日)第(數字)個待辦 \nEx: 刪除0526第5個待辦'
                         )
                     ]
                 ),
