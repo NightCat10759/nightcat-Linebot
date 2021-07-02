@@ -56,7 +56,7 @@ def handle_message(event):
         message = IncreaseTodo(msg[2:6],msg[6:],Todo_dict) #(月日,內容,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '刪除' in msg[0:2]:
-        if (msg[2:6].isdigit() == false):
+        if (msg[2:6].isdigit() == False):
             message = TextSendMessage(text="月份必須為整數，詳細請輸入Help。")
             return message
         else:
