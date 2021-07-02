@@ -76,7 +76,7 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     else:
         message = TextSendMessage(text="日期必須為整數")
         return message
-    if Content[0] is None:
+    if Content is None:
         message = TextSendMessage(text="請輸入待辦內容")
         return message
     else:
