@@ -62,7 +62,7 @@ def handle_message(event):
         message = ShowTodo(msg[2:6],Todo_dict) #(月日,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif 'Help' in msg:
-        message = Help()
+    #    message = Help()
         line_bot_api.reply_message(event.reply_token, message)
     elif '1' in msg:
         message = TextSendMessage(text="如何新增待辦?\n \
