@@ -89,8 +89,6 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     return message
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
-    message = TextSendMessage(text="OKAY")
-    return message
     """
      # 偵測本日有沒有待辦內容
     if len(TodoDict[MonthDay])==0:
@@ -105,9 +103,10 @@ def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
     Str=""
     Month = MonthDay[0:2]
     Day   = MonthDay[2:4]
-
+    Count = 0
     for k in TodoDict[MonthDay]:
+        Count += 1
         Str += Month+"月"+ Day +"日 第%d項待辦:"%Count+str(k)+"\n"
-        message = TextSendMessage(text=Str)
+    message = TextSendMessage(text=Str)
     return message
 
