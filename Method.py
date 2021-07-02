@@ -97,11 +97,10 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     elif int(num) not in num_0_max:
         message = TextSendMessage(text="超出待辦範圍，詳細請打顯示(月日)。")
         return message
-    else:
-        num=int(num) # 將第幾個轉換成數字
-        numLocal=num-1
-        del TodoDict[Monthday][numLocal]
-        message = TextSendMessage(text="刪除第"+str(num)+"項成功")
+    num=int(num) # 將第幾個轉換成數字
+    numLocal=num-1
+    del TodoDict[Monthday][numLocal]
+    message = TextSendMessage(text="刪除第"+str(num)+"項成功")
     return message
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
