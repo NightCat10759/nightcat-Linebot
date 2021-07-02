@@ -69,7 +69,8 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
         message = TextSendMessage(text="請輸入待辦內容，詳細請打Help。")
         return message
     # 執行新增
-
+    Month = MonthDay[0:2]
+    Day   = MonthDay[2:4]
     TodoDict.setdefault(MonthDay,[])
     TodoDict[MonthDay].append(Content)#把月日設為KEY值，把內容丟到後面的list。 <==新增成功
     message = TextSendMessage(text=Month+"月"+Day+"日待辦新增成功") 
