@@ -65,7 +65,7 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
             Day  =MonthDay[2:4]
             Month_In=Interval(1,12)
             Day_In  =Interval(1,31)
-            if (Month != Month_In) or (Day != Day_In) :
+            if (int(Month) != Month_In) or (int(Day) != Day_In) :
                 message = TextSendMessage("日期錯誤請重新輸入")
     # 不是整數 break
     else:
@@ -80,7 +80,7 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
         TodoDict.setdefault(MonthDay,[])
         TodoDict[MonthDay].append(Content)#把月日設為KEY值，把內容丟到後面的list。 <==新增成功
         message = TextSendMessage(text=Month+"月"+Day+"日待辦新增成功") 
-        
+
     return message
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
 def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
