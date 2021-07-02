@@ -9,7 +9,7 @@ def Help_template():
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
-                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Number_1_in_green_rounded_square.svg/200px-Number_1_in_green_rounded_square.svg.png',
+                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Formules.JPG/640px-Formules.JPG',
                     title='待辦',
                     text='按下想知道的內容',
                     actions=[
