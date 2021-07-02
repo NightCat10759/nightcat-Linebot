@@ -104,8 +104,6 @@ def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
     Str=""
     Month=MonthDay[0:2]
     Day  =MonthDay[2:4]
-    if Month[0]=='0':
-        Month=MonthDay[1]
     for k in TodoDict[MonthDay]:
         Str+=Month+"月"+ Day +"日 第%d項待辦:"%Count+str(k)+"\n"
         message = TextSendMessage(text=Str)
