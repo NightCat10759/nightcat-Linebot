@@ -63,9 +63,11 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     else:
         message = TextSendMessage(text="日期必須為整數，詳細請打Help。")
         return message
+    # 檢查內容數
     if len(Content) == 0:
         message = TextSendMessage(text="請輸入待辦內容，詳細請打Help。")
         return message
+    # 執行新增
     else:
         TodoDict.setdefault(MonthDay,[])
         TodoDict[MonthDay].append(Content)#把月日設為KEY值，把內容丟到後面的list。 <==新增成功
@@ -79,6 +81,8 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     # 月份是否符合格式
     
     if MonthDay.isdigit() :
+        message = TextSendMessage(text="刪除進來了。")
+        return message
         # 是否為4位數
         if len(MonthDay)!=4 :
             message = TextSendMessage(text="日期必須為四碼，詳細請打Help。")
