@@ -9,11 +9,11 @@ def Help_template():
         template=CarouselTemplate(
             columns=[
                 CarouselColumn(
- #                   thumbnail_image_url='https://commons.wikimedia.org/w/index.php?search=book&title=Special:MediaSearch&go=Go&type=image',
+                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Number_1_in_green_rounded_square.svg/200px-Number_1_in_green_rounded_square.svg.png',
                     title='待辦',
                     text='按下想知道的內容',
                     actions=[
-                        PostbackTemplateAction(
+                        MessageTemplateAction(
                             label='如何新增待辦?',
                             text='Ans => 請輸入 : 新增(月日)(內容) Ex: 新增0522今天要去倒垃圾")'
                         ),
@@ -21,7 +21,7 @@ def Help_template():
                             label='如何顯示待辦?',
                             text='Ans => 請輸入:顯示(月日) Ex:顯示0522"'
                         ),
-                        URITemplateAction(
+                        MessageTemplateAction(
                             label='如何刪除待辦?',
                             text='Ans => 請輸入 :刪除(月日)第(數字)個待辦 Ex: 刪除0526第5個待辦'
                         )
