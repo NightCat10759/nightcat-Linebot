@@ -50,19 +50,6 @@ def Help_template():
         )
     )
     return message
-def MonthCheck(MonthDay) :
-    # 偵測是否為整數
-    if MonthDay.isdigit() :
-        # 是否為4位數
-        if len(MonthDay)!=4 :
-            message = TextSendMessage(text="日期必須為四碼")
-            return message
-        else:
-            return
-    # 不是整數 break
-    else:
-        message = TextSendMessage(text="日期必須為整數")
-        return message
 #   如何新增待辦?    Ans:請輸入 新增(年月日)(內容) Ex: 新增0522今天要去倒垃圾
 def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     # 月份是否符合格式
@@ -70,14 +57,14 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     if MonthDay.isdigit() :
         # 是否為4位數
         if len(MonthDay)!=4 :
-            message = TextSendMessage(text="日期必須為四碼")
+            message = TextSendMessage(text="日期必須為四碼，詳細請打Help。")
             return message
     # 不是整數 break
     else:
-        message = TextSendMessage(text="日期必須為整數")
+        message = TextSendMessage(text="日期必須為整數，詳細請打Help。")
         return message
     if len(Content) == 0:
-        message = TextSendMessage(text="請輸入待辦內容")
+        message = TextSendMessage(text="請輸入待辦內容，詳細請打Help。")
         return message
     else:
         TodoDict.setdefault(MonthDay,[])
@@ -90,11 +77,26 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
 def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     # 月份是否符合格式
-    num=int(num) # 將第幾個轉換成數字
-    if num == 0:
-        message = TextSendMessage(text="請輸入要刪除的行數")
+    if MonthDay.isdigit() :
+        # 是否為4位數
+        if len(MonthDay)!=4 :
+            message = TextSendMessage(text="日期必須為四碼，詳細請打Help。")
+            return message
+    # 不是整數 break
+    else:
+        message = TextSendMessage(text="日期必須為整數，詳細請打Help。")
+        return message
+    # 建立待辦數區間
+    num_0_max = (0,len(TodoDict[Monthday]))
+    # 第幾個是否為整數
+    if num.isdigit() == false:
+        message = TextSendMessage(text="格式錯誤，詳細請打Help。")
+        return message
+    elif int(num) not in num_0_max:
+        message = TextSendMessage(text="超出待辦範圍，詳細請打顯示(月日)。")
         return message
     else:
+        num=int(num) # 將第幾個轉換成數字
         numLocal=num-1
         del TodoDict[Monthday][numLocal]
         message = TextSendMessage(text="刪除第"+str(num)+"項成功")
@@ -115,5 +117,5 @@ def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
             message = TextSendMessage(text=Month+"月"+MonthDay[2:4]+"日沒有待辦")
         return message
     except KeyError:
-        message = TextSendMessage(text="輸入錯誤的月日")
+        message = TextSendMessage(text="輸入錯誤的月日，詳細請打Help。")
         return message
