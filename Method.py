@@ -77,7 +77,7 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
 def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     # 月份是否符合格式
-    """
+    
     if MonthDay.isdigit() :
         # 是否為4位數
         if len(MonthDay)!=4 :
@@ -97,7 +97,7 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     elif int(num) not in num_0_max:
         message = TextSendMessage(text="超出待辦範圍，詳細請打顯示(月日)。")
         return message
-    
+     """
     num=int(num) # 將第幾個轉換成數字
     numLocal=num-1
     del TodoDict[Monthday][numLocal]
