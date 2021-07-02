@@ -74,15 +74,22 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
         # 月日分開
         Month=MonthDay[0:2]
         Day  =MonthDay[2:4]
-            # 如果月為0設為個位數
-        if Month[0]=='0':
+        # 如果月份為 0 把十位數去掉
+        if (int(Month[0]) == 0) :
             Month=MonthDay[1]
-        elif (Month[0] > 1) or (Day > 31):
-            message = TextSendMessage(text="月份/日期錯誤")  #顯示新增成功的資訊   <==內容丟回去
-            return message
-        if MonthDay[0]==0:
-                Month=MonthDay[1]
-        message = TextSendMessage(text=Month+"月"+MonthDay[2:4]+"日待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
+        # 如果月份十位數 = 1 
+        elif (int(Month[0]) == 1) :
+            # 月份個位數超過 2 ERROR
+            if (int(Month[1]) > 2) :
+                message = TextSendMessage(text="月份錯誤")
+        # 如果月份超過 1 ERROR
+        elif (int(Month[0]) != 1) :
+            message = TextSendMessage(text="月份錯誤")
+        # 檢查日期
+        if (int(Day[0]) < 1) or (int(Day) > 31):
+            message = TextSendMessage(text="日期錯誤")
+
+    message = TextSendMessage(text=Month+"月"+Day+"日待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
     return message
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
 def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
