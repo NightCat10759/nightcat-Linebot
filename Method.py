@@ -66,7 +66,18 @@ def MonthCheck(MonthDay) :
 #   如何新增待辦?    Ans:請輸入 新增(年月日)(內容) Ex: 新增0522今天要去倒垃圾
 def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     # 月份是否符合格式
-    MonthCheck(MonthDay)
+    # 偵測是否為整數
+    if MonthDay.isdigit() :
+        # 是否為4位數
+        if len(MonthDay)!=4 :
+            message = TextSendMessage(text="日期必須為四碼")
+            return message
+        else:
+            return
+    # 不是整數 break
+    else:
+        message = TextSendMessage(text="日期必須為整數")
+        return message
     if Content[0] is None:
         message = TextSendMessage(text="請輸入待辦內容")
         return message
@@ -81,7 +92,18 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
 def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     # 月份是否符合格式
-    MonthCheck(MonthDay)
+    # 偵測是否為整數
+    if MonthDay.isdigit() :
+        # 是否為4位數
+        if len(MonthDay)!=4 :
+            message = TextSendMessage(text="日期必須為四碼")
+            return message
+        else:
+            return
+    # 不是整數 break
+    else:
+        message = TextSendMessage(text="日期必須為整數")
+        return message
     num=int(num) # 將第幾個轉換成數字
     if num is None:
         message = TextSendMessage(text="請輸入要刪除的行數")
