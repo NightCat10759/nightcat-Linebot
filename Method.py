@@ -4,7 +4,7 @@ from linebot.models import *
 #TodoDict = 主程式傳來的dict
 
 def Help_template():
-    message = TemplateSendMessage(
+    TemplateSendMessage(
         alt_text='一則旋轉木馬按鈕訊息',
         template=CarouselTemplate(
             columns=[
@@ -23,7 +23,7 @@ def Help_template():
                         ),
                         MessageTemplateAction(
                             label='如何刪除待辦?',
-                            text='Ans => 請輸入 :刪除(月日)第(數字)個待辦 \nEx: 刪除0526第5個待辦'
+                            message = TextSendMessage(text='Ans => 請輸入 :刪除(月日)第(數字)個待辦 \nEx: 刪除0526第5個待辦')
                         )
                     ]
                 ),
