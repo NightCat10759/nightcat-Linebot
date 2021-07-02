@@ -52,13 +52,21 @@ def Help_template():
     return message
 #   如何新增待辦?    Ans:請輸入 新增(年月日)(內容) Ex: 新增0522今天要去倒垃圾
 def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
-    # 月份是否符合格式
+
     # 偵測是否為整數
     if MonthDay.isdigit() :
         # 是否為4位數
         if len(MonthDay)!=4 :
             message = TextSendMessage(text="日期必須為四碼，詳細請打Help。")
             return message
+        else:
+            # 月份是否符合格式
+            Month=MonthDay[0:2]
+            Day  =MonthDay[2:4]
+            Month_In=Interval(1,12)
+            Day_In  =Interval(1,31)
+            if (Month != Month_In) or (Day != Day_In) :
+                message = TextSendMessage("日期錯誤請重新輸入")
     # 不是整數 break
     else:
         message = TextSendMessage(text="日期必須為整數，詳細請打Help。")
@@ -71,25 +79,8 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     else:
         TodoDict.setdefault(MonthDay,[])
         TodoDict[MonthDay].append(Content)#把月日設為KEY值，把內容丟到後面的list。 <==新增成功
-        # 月日分開
-        Month=MonthDay[0:2]
-        Day  =MonthDay[2:4]
-        # 如果月份為 0 把十位數去掉
-        if (int(Month[0]) == 0) :
-            Month=MonthDay[1]
-        # 如果月份十位數 = 1 
-        elif (int(Month[0]) == 1) :
-            # 月份個位數超過 2 ERROR
-            if (int(Month[1]) > 2) :
-                message = TextSendMessage(text="月份錯誤")
-        # 如果月份超過 1 ERROR
-        elif (int(Month[0]) != 1) :
-            message = TextSendMessage(text="月份錯誤")
-        # 檢查日期
-        if (int(Day[0]) < 1) or (int(Day) > 31):
-            message = TextSendMessage(text="日期錯誤")
-
-    message = TextSendMessage(text=Month+"月"+Day+"日待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
+        message = TextSendMessage(text=Month+"月"+Day+"日待辦新增成功") 
+        
     return message
 #   如何刪除待辦?    Ans:請輸入 刪除月日第(數字)個待辦 Ex: 刪除0522第5個待辦
 def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
@@ -98,16 +89,12 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     numLocal=num-1
     del TodoDict[Monthday][numLocal]
     message = TextSendMessage(text="刪除第"+str(num)+"項成功")
+
     return message
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
-    Str=""
-    Month=MonthDay[0:2]
-    Day  =MonthDay[2:4]
-    for k in TodoDict[MonthDay]:
-        Str+=Month+"月"+ Day +"日 第%d項待辦:"%Count+str(k)+"\n"
-        message = TextSendMessage(text=Str)
-    # 偵測本日有沒有待辦內容
+
+     # 偵測本日有沒有待辦內容
     if len(TodoDict[MonthDay])==0:
         try:
             del TodoDict[MonthDay]
@@ -115,5 +102,14 @@ def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
                 message = TextSendMessage(text=Month+"月"+ Day +"日沒有待辦")
         except KeyError:
             message = TextSendMessage("本日沒有待辦")
+
+    # 顯示
+    Str=""
+    Month = MonthDay[0:2]
+    Day   = MonthDay[2:4]
+
+    for k in TodoDict[MonthDay]:
+        Str += Month+"月"+ Day +"日 第%d項待辦:"%Count+str(k)+"\n"
+        message = TextSendMessage(text=Str)
     return message
 
