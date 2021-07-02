@@ -72,8 +72,6 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
         if len(MonthDay)!=4 :
             message = TextSendMessage(text="日期必須為四碼")
             return message
-        else:
-            return
     # 不是整數 break
     else:
         message = TextSendMessage(text="日期必須為整數")
@@ -98,8 +96,6 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
         if len(MonthDay)!=4 :
             message = TextSendMessage(text="日期必須為四碼")
             return message
-        else:
-            return
     # 不是整數 break
     else:
         message = TextSendMessage(text="日期必須為整數")
