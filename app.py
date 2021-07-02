@@ -56,15 +56,21 @@ def handle_message(event):
         message = IncreaseTodo(msg[2:6],msg[6:],Todo_dict) #(月日,內容,待辦表)
         line_bot_api.reply_message(event.reply_token, message)
     elif '刪除' in msg[0:2]:
-        if (Todo_dict[msg[2:6]] == False):
-            message = TextSendMessage(text="本日沒有資料無法刪除，詳細請輸入Help。")
-            line_bot_api.reply_message(event.reply_token, message)
-        else:
+        try:
+            Todo_dict[msg[2:6]]
             message = DeleteTodo(msg[2:6],msg[7],Todo_dict) #(月日,第幾個,待辦表)
             line_bot_api.reply_message(event.reply_token, message)
+        except KeyError:
+            message = TextSendMessage(text="本日沒有輸入資料，詳細請輸入Help。")
+            line_bot_api.reply_message(event.reply_token, message)
     elif '顯示' in msg[0:2]:
-        message = ShowTodo(msg[2:6],Todo_dict) #(月日,待辦表)
-        line_bot_api.reply_message(event.reply_token, message)
+        try:
+            Todo_dict[msg[2:6]]
+            message = ShowTodo(msg[2:6],Todo_dict) #(月日,待辦表)
+            line_bot_api.reply_message(event.reply_token, message)
+        except KeyError:
+            message = TextSendMessage(text="本日沒有輸入資料，詳細請輸入Help。")
+            line_bot_api.reply_message(event.reply_token, message)
     elif 'Help' in msg:
         message = Help_template()
         line_bot_api.reply_message(event.reply_token, message)

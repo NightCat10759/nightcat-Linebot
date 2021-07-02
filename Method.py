@@ -71,7 +71,15 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
     else:
         TodoDict.setdefault(MonthDay,[])
         TodoDict[MonthDay].append(Content)#把月日設為KEY值，把內容丟到後面的list。 <==新增成功
+        # 月日分開
         Month=MonthDay[0:2]
+        Day  =MonthDay[2:4]
+            # 如果月為0設為個位數
+        if Month[0]=='0':
+            Month=MonthDay[1]
+        elif (Month[0] > 1) or (Day > 31):
+            message = TextSendMessage(text="月份/日期錯誤")  #顯示新增成功的資訊   <==內容丟回去
+            return message
         if MonthDay[0]==0:
                 Month=MonthDay[1]
         message = TextSendMessage(text=Month+"月"+MonthDay[2:4]+"日待辦新增成功")  #顯示新增成功的資訊   <==內容丟回去
@@ -84,24 +92,23 @@ def DeleteTodo(Monthday,num,TodoDict) : #(月日,第幾個,待辦表)
     del TodoDict[Monthday][numLocal]
     message = TextSendMessage(text="刪除第"+str(num)+"項成功")
     return message
-
-
-
 #   如何顯示待辦?    Ans:請輸入 顯示(月日)
 def ShowTodo(MonthDay,TodoDict) :   #(月日,待辦表)
-    try:
-        Count=0
-        Str=""
-        for k in TodoDict[MonthDay]:
-            Count+=1
-            Str+=MonthDay[1]+"月"+MonthDay[2:4]+"日 第%d項待辦:"%Count+str(k)+"\n"
-            message = TextSendMessage(text=Str)
-        if Count==0:
-            Month=MonthDay[0:2]
+    Str=""
+    Month=MonthDay[0:2]
+    Day  =MonthDay[2:4]
+    if Month[0]=='0':
+        Month=MonthDay[1]
+    for k in TodoDict[MonthDay]:
+        Str+=Month+"月"+ Day +"日 第%d項待辦:"%Count+str(k)+"\n"
+        message = TextSendMessage(text=Str)
+    # 偵測本日有沒有待辦內容
+    if len(TodoDict[MonthDay])==0:
+        try:
+            del TodoDict[MonthDay]
             if MonthDay[0]==0:
-                Month=MonthDay[1]
-            message = TextSendMessage(text=Month+"月"+MonthDay[2:4]+"日沒有待辦")
-        return message
-    except KeyError:
-        message = TextSendMessage(text="輸入錯誤的月日，詳細請打Help。")
-        return message
+                message = TextSendMessage(text=Month+"月"+ Day +"日沒有待辦")
+        except KeyError:
+            message = TextSendMessage("本日沒有待辦")
+    return message
+
