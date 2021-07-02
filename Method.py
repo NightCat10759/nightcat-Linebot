@@ -58,19 +58,12 @@ def IncreaseTodo(MonthDay,Content,TodoDict) :   #(月日,內容,待辦表)
         # 是否為4位數
         if len(MonthDay)!=4 :
             message = TextSendMessage(text="日期必須為四碼，詳細請打Help。")
-            return message
-        else:
-            # 月份是否符合格式
-            Month=MonthDay[0:2]
-            Day  =MonthDay[2:4]
-            Month_In=Interval(1,12)
-            Day_In  =Interval(1,31)
-            if (int(Month) != Month_In) or (int(Day) != Day_In) :
-                message = TextSendMessage("日期錯誤請重新輸入")
+            return message    
     # 不是整數 break
     else:
         message = TextSendMessage(text="日期必須為整數，詳細請打Help。")
         return message
+        
     # 檢查內容數
     if len(Content) == 0:
         message = TextSendMessage(text="請輸入待辦內容，詳細請打Help。")
